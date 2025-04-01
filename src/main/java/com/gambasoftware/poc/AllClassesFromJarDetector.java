@@ -6,18 +6,8 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-public class UnusedClassDetector {
-
-    public static void main(String[] args) throws Exception {
-        String jarPath = "target/poc-0.0.1-SNAPSHOT.jar";
-        String packagePrefix = "com.gambasoftware.poc";
-
-        Set<String> allClassesV2 = findAllClassesInSpringBootJar(jarPath, packagePrefix);
-
-        System.out.println(allClassesV2);
-    }
-
-    private static Set<String> findAllClassesInSpringBootJar(String jarPath, String packagePrefix) throws Exception {
+public class AllClassesFromJarDetector {
+    public static Set<String> findAllClassesInSpringBootJar(String jarPath, String packagePrefix) throws Exception {
         Set<String> classes = new HashSet<>();
         String packagePath = "BOOT-INF/classes/" + packagePrefix.replace('.', '/');
 
