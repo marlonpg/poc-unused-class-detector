@@ -1,4 +1,4 @@
-package com.gambasoftware.poc;
+package com.gambasoftware.poc.alternatives;
 
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -7,7 +7,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class AllClassesFromJarDetector {
-    public static Set<String> findAllClassesInSpringBootJar(String jarPath, String packagePrefix) throws Exception {
+    public static Set<String> findAllClassesUsingJarFile(String jarPath, String packagePrefix) throws Exception {
         Set<String> classes = new HashSet<>();
         String packagePath = "BOOT-INF/classes/" + packagePrefix.replace('.', '/');
 

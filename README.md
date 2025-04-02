@@ -8,4 +8,3 @@
 - configuration
 - access directly
 - is it in memory (checking runtime)
-- 
