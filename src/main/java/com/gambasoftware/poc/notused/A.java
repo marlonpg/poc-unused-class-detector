@@ -1,4 +1,6 @@
-package com.gambasoftware.poc.used;
+package com.gambasoftware.poc.notused;
+
+import com.gambasoftware.poc.used.C;
 
 public class A {
     private C c;

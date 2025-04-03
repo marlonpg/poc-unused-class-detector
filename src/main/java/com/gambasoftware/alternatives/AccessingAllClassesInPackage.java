@@ -1,4 +1,4 @@
-package com.gambasoftware.poc.alternatives;
+package com.gambasoftware.alternatives;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
