@@ -3,6 +3,8 @@
 
 - https://www.baeldung.com/java-find-all-classes-in-package
 - https://foojay.io/today/instrumenting-java-code-to-find-and-handle-unused-classes/
+- https://www.baeldung.com/java-asm
+- https://asm.ow2.io/asm4-guide.pdf
 
 - reflection
 - configuration
