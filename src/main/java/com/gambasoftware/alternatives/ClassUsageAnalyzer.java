@@ -28,7 +28,7 @@ public class ClassUsageAnalyzer {
                 try (InputStream is = jarFile.getInputStream(entry)) {
                     ClassReader reader = new ClassReader(is);
                     UsageVisitor visitor = new UsageVisitor(targetClasses);
-                    reader.accept(visitor, ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+                    reader.accept(visitor, 0);
 
                     if (!visitor.getUsedClasses().isEmpty()) {
                         String currentClass = entry.getName()
@@ -194,6 +194,15 @@ public class ClassUsageAnalyzer {
                 checkClass(owner);
                 // Check method parameter and return types
                 checkMethodType(Type.getMethodType(descriptor));
+                // Check if Reflection methods are called
+                if (owner.equals("java/lang/Class") && name.equals("forName")) {
+                    System.out.println("Reflection detected: Class.forName");
+                    System.out.println(descriptor);
+                }
+                if (owner.equals("java/lang/reflect/Method") && name.equals("invoke")) {
+                    System.out.println("Reflection detected: Method.invoke");
+                    System.out.println(descriptor);
+                }
             }
 
             /**
@@ -213,6 +222,8 @@ public class ClassUsageAnalyzer {
              */
             @Override
             public void visitLdcInsn(Object value) {
+
+                //TODO: Continue looking HERE
                 if (value instanceof Type) {
                     // Check if the constant is a class reference
                     checkType((Type) value);
