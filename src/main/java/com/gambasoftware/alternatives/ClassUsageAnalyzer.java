@@ -222,11 +222,19 @@ public class ClassUsageAnalyzer {
              */
             @Override
             public void visitLdcInsn(Object value) {
-
-                //TODO: Continue looking HERE
                 if (value instanceof Type) {
                     // Check if the constant is a class reference
                     checkType((Type) value);
+                } else if (value instanceof String) {
+                    // Check if the string constant might be a class name used in reflection
+                    String strValue = (String) value;
+                    if (strValue.contains(".") && !strValue.contains(" ")) {
+                        // This could be a fully qualified class name used in reflection
+                        String className = strValue.replace('/', '.');
+                        if (targetClasses.contains(className)) {
+                            usedClasses.add(className);
+                        }
+                    }
                 }
             }
         }
